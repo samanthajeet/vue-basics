@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <title>Vue Basics</title>
+
+    <style>
+      .canvas{
+        width: 20rem;
+        height: 20rem;
+        margin-top: 5rem;
+        background: #ddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Vue Basics</h1>
+    <div id="app">
+      <h2>{{ title }} </h2>
+
+      <ul>
+        <li v-for="item in items">{{ item }}</li>
+      </ul>
+
+      <div v-for="(ninja,index) in ninjas">
+        <p>{{ index }} - {{ ninja.name }}</p>
+        <p>age: {{ ninja.age }}</p>
+        <p>belt color: {{ ninja.belt }}</p>
+      </div>
+
+
+
+      <button @click.alt="logmessage">alt-click me</button>
+      <button @click.shift="logmessage">shift-click me</button>
+      <a href="http://www.google.com" @click.prevent="logmessage" >Google</a>
+      <button @click="toggleName">showName: {{ showName }}</button>
+      <p v-if="showName">Celine Dion</p>
+      <p v-else-if="showAge">30 - only shows if showName is false</p>
+
+      <button @click="logEvent">log event info</button>
+      <div class="canvas" @mousemove="logCoords">
+        {{coords.x}} ,
+        {{coords.y}}
+      </div>
+      <p>my name is {{name}}</p>
+      <input type="text" v-model="name" >
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
